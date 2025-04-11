@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Unknown.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<UnknownContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UnknownContext") ?? throw new InvalidOperationException("Connection string 'UnknownContext' not found.")));
 
 var app = builder.Build();
 
