@@ -33,6 +33,7 @@ namespace Unknown.Pages.Movies
             if (!ModelState.IsValid)
             {
                 return Page();
+
             }
 
             _context.Movie.Add(Movie);
